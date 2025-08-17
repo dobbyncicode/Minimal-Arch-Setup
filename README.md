@@ -226,7 +226,11 @@ bash <(curl -fsSL https://tinyurl.com/Installer-Sh)
 - `pipewire` `pipewire-pulse` `alsa-utils` `wireplumber` - Audio services
 - `ufw` - Firewall
 - `mpv` - Media player
-- `xdg-user-dirs` - auto handle main user dirs
+- `xdg-user-dirs` - Auto handle main user dirs
+- `fontconfig` - Font management
+- `lxappearance` - GTK apps theming
+- `qt5ct` - QT5 apps theming
+- `qt6ct` - QT6 apps theming
 
 ---
 
@@ -236,3 +240,4 @@ bash <(curl -fsSL https://tinyurl.com/Installer-Sh)
 - `noto-fonts` - Noto sans
 - `noto-fonts-emoji` - Emoji
 - `ttf-firacode-nerd` - FiraCode Nerd
+- `noto-fonts-cjk` - CJK support

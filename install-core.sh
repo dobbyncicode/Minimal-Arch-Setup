@@ -40,6 +40,7 @@ fi
 FONTS=(
     inter-font
     noto-fonts
+    noto-fonts-cjk
     noto-fonts-emoji
     ttf-firacode-nerd
     ttf-jetbrains-mono-nerd
@@ -48,17 +49,21 @@ FONTS=(
 PACKAGES=(
     alsa-utils
     brave-bin
+    fontconfig
     gvfs
     hyprland
     hyprpolkitagent
     hyprshot
     kitty
     libinput
+    lxappearance
     matugen-bin
     mpv
     pavucontrol
     pipewire
     pipewire-pulse
+    qt5ct
+    qt6ct
     sddm
     swaync
     swww
@@ -71,6 +76,7 @@ PACKAGES=(
     xdg-desktop-portal
     xdg-desktop-portal-wlr
     xdg-user-dirs
+    zsh
 )
 
 SERVICES=(
@@ -80,7 +86,7 @@ SERVICES=(
 # -- Install helper function -- #
 install_pkg() {
     local pkg="$1"
-    if yay -Si "$pkg" >/dev/null 2>&1; then
+    if yay -S "$pkg" >/dev/null 2>&1; then
         if yay -S --needed --noconfirm "$pkg" >/dev/null 2>&1; then
             echo -e "${GREEN}  ==> Installed: ${pkg}${RESET}"
         else
