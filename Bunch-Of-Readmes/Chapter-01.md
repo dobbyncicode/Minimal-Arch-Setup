@@ -185,4 +185,4 @@ This sums up the first chapter.
 
 | Next |
 |------|
-| [Chapter 02 : Installing Essential Packages](Bunch-Of-Readmes/Chapter-02.md) |
+| [Chapter 02 : Installing Essential Packages](Chapter-02.md) |
