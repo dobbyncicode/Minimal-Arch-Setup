@@ -7,5 +7,7 @@ This is not meant to be for everyone. I am well aware that everything in this re
 ---
 
 ## Table of contents
-1. [Chapter 01](Bunch-Of-Readmes/Chapter-01.md)
-2. [Chapter 02](Bunch-Of-Readmes/Chapter-02.md)
+1. [Chapter 01 : Installing Base Arch](Bunch-Of-Readmes/Chapter-01.md)
+2. [Chapter 02 : Installing Essential Packages](Bunch-Of-Readmes/Chapter-02.md)
+
+---

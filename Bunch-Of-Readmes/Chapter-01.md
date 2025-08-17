@@ -182,3 +182,7 @@ reboot
 Now, unplug the drive where the Arch ISO is in to boot to arch's ***tty***.
 
 This sums up the first chapter.
+
+| Next |
+|------|
+| [Chapter 02 : Installing Essential Packages](Bunch-Of-Readmes/Chapter-02.md) |

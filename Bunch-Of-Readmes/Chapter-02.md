@@ -46,3 +46,9 @@ bash <(curl -fsSL https://tinyurl.com/Installer-Sh)
 - `noto-fonts-emoji` - Emoji
 - `ttf-firacode-nerd` - FiraCode Nerd
 - `noto-fonts-cjk` - CJK support
+
+---
+
+| Back | Next |
+|------|------|
+| [Chapter 01 : Installing Base Arch](Bunch-Of-Readmes/Chapter-01.md) | [Chapter 03 : Configuring Hyprland](Bunch-Of-Readmes/Chapter-02.md) |
