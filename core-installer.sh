@@ -87,7 +87,7 @@ install_list() {
         current=$((current+1))
         progress_bar "$current" "$total" "$pkg"
 
-        if sudo -n pacman -S --noconfirm --needed "$pkg" \
+        if yay -S --noconfirm --needed "$pkg" \
             >/dev/null 2>>"$LOGFILE"; then
             if [[ "$type" == "fonts" ]]; then
                 SUCCESS_FONTS+=("$pkg")
