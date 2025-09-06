@@ -1,0 +1,33 @@
+#workspaces {
+  padding-top: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  padding-left: 15px;
+
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 30px;
+}
+
+#workspaces button {
+  color: @secondary;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#workspaces button.active {
+  color: @primary;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#workspaces button:hover {
+  transition: all 0.3s ease;
+  color: @tertiary;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}

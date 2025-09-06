@@ -1,0 +1,16 @@
+{
+    "hyprland/window": {
+        "format": "{title}",
+        "min-length": 40,
+        "max-length": 40,
+        "all-outputs": true,
+        "empty-format": "awdsasdfawsfas",
+        "icon-size": 16,
+        "icon": true,
+        "rewrite": {
+            "": "Try opening some window"
+        }
+    }
+}
+
+  

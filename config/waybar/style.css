@@ -1,0 +1,11 @@
+@import url("Styles/colors.css");
+@import url("Styles/global-style.css");
+@import url("Styles/window.css");
+@import url("Styles/waybar.css");
+@import url("Styles/workspaces.css");
+@import url("Styles/pulse-audio-slider.css");
+@import url("Styles/clock.css");
+@import url("Styles/separator.css");
+@import url("Styles/pulseaudio.css");
+@import url("Styles/tray.css");
+@import url("Styles/swaync.css");

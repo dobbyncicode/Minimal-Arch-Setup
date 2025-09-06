@@ -1,0 +1,28 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin-top": 0,
+  "margin-right": 0,
+  "margin-left": 0,
+  "margin-bottom": 0,
+  "spacing": 1,
+  "expand-center": true,
+  "reload_style_on_change": true,
+
+  "include": ["Modules/source-modules.jsonc"],
+
+
+  "modules-left": [
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces",
+    "group/audio"
+  ],
+
+  "modules-right": [
+    "custom/swaync",
+    "clock"
+  ]
+}

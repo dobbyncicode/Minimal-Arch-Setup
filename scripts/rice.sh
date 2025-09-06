@@ -13,7 +13,7 @@ REPO_DIR="$HOME/Builds/Minimal-Arch-Setup"
 SRC_CONFIG="$REPO_DIR/config"
 DEST_CONFIG="$HOME/.config"
 
-LOGFILE="$REPO_DIR/rice_errors.log"
+LOGFILE="$REPO_DIR/logs/rice_errors.log"
 SUCCESS_LINKS=()
 FAILED_LINKS=()
 
@@ -62,19 +62,36 @@ link_configs() {
     printf "${GREEN}✓ Config linking complete.${RESET}\n"
 }
 
+link_scripts() {
+    print_section "Linking Scripts" "$YELLOW"
+
+    src="$REPO_DIR/scripts"
+    dest="$HOME/Scripts"
+    mkdir -p "$HOME"
+
+    if ln -sfn "$src" "$dest" 2>>"$LOGFILE"; then
+        SUCCESS_LINKS+=("Scripts → ~/Scripts")
+        printf "${GREEN}✓ Scripts linked.${RESET}\n"
+    else
+        FAILED_LINKS+=("Scripts")
+        echo "--- Failed to link Scripts ---" >> "$LOGFILE"
+        printf "${RED}✗ Failed to link Scripts.${RESET}\n"
+    fi
+}
+
 report_summary() {
     echo
     printf "${BOLD}=== Rice Summary ===${RESET}\n"
 
     if [ ${#SUCCESS_LINKS[@]} -gt 0 ]; then
-        print_section "Linked Configs" "$GREEN"
+        print_section "Linked" "$GREEN"
         for i in "${SUCCESS_LINKS[@]}"; do
             printf "  • %s\n" "$i"
         done
     fi
 
     if [ ${#FAILED_LINKS[@]} -gt 0 ]; then
-        print_section "Failed Configs" "$RED"
+        print_section "Failed" "$RED"
         for i in "${FAILED_LINKS[@]}"; do
             printf "  • %s\n" "$i"
         done
@@ -84,10 +101,16 @@ report_summary() {
 
 # ── Main ─────────────────────────────────────────────────
 clear
-printf "${BOLD}${BLUE}Arch Hyprland Auto-Rice (Config Linking)${RESET}\n"
-: > "$LOGFILE"
+printf "${BOLD}${BLUE}Arch Hyprland Auto-Rice (Config + Scripts Linking)${RESET}\n"
+
+# write log header
+{
+  echo "=== Rice Errors Log - $(date +"%Y-%m-%d %I:%M:%S %p") ==="
+  echo
+} > "$LOGFILE"
 
 link_configs
+link_scripts
 report_summary
 
-printf "\n${GREEN}✨ Dotfiles linked! Time to enjoy the rice.${RESET}\n"
+printf "\n${GREEN}✨ Dotfiles & scripts linked! Time to enjoy the rice.${RESET}\n"

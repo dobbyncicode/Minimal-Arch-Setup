@@ -1,0 +1,15 @@
+{
+    "group/audio": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 500,
+			"transition-left-to-right": true,
+			"click-to-reveal": false
+		},
+		"modules": [
+			"pulseaudio",
+			"custom/separator-beam",
+			"pulseaudio/slider"
+		]
+	},
+}

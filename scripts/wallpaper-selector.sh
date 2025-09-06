@@ -37,4 +37,5 @@ if [[ -n "$SELECTED" ]]; then
         --transition-duration "$DURATION" \
         --transition-pos "$POSITION" \
         --transition-bezier "$BEZIER"
+    swaync-client --reload-config
 fi

@@ -20,28 +20,41 @@ FONTS=(
 
 PACKAGES=(
     alsa-utils
+    blueprint-compiler
     brave-bin
+    dbus
     fontconfig
+    gobject-introspection
+    glib2
+    gtk4
+    gtk4-layer-shell
+    granite7
     gvfs
     hyprland
     hyprpolkitagent
     hyprshot
+    json-glib
     kitty
     libinput
+    libgee
     lxappearance
     matugen-bin
+    meson
     mpv
     pavucontrol
     pipewire
     pipewire-pulse
     qt5ct
     qt6ct
+    sassc
+    scdoc
     sddm
     swaync
     swww
     thunar
     ufw
     unzip
+    vala
     waybar
     wayland-protocols
     wofi
@@ -56,7 +69,8 @@ PACKAGES=(
 SERVICES=( sddm )
 
 # ── Globals ──────────────────────────────────────────────
-LOGFILE="install_errors.log"
+LOGDIR="$(dirname "$0")/../logs"
+LOGFILE="$LOGDIR/install_errors.log"
 SUCCESS_PKGS=()
 FAILED_PKGS=()
 SUCCESS_FONTS=()
@@ -177,6 +191,10 @@ clear
 printf "${BOLD}${BLUE}Arch Hyprland Auto-Rice Installer${RESET}\n"
 
 sudo -v || { echo "Need sudo privileges"; exit 1; }
+
+# ensure Logs directory exists
+mkdir -p "$LOGDIR"
+
 {
     echo "=== Installation Log - $(date '+%Y-%m-%d %I:%M:%S %p') ==="
     echo

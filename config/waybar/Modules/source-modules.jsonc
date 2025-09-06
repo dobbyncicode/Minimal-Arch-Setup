@@ -1,0 +1,13 @@
+{
+    "include": [
+        "Modules/workspaces.jsonc",
+        "Modules/window.jsonc",
+        "Modules/pulse-audio-slider.jsonc",
+        "Modules/clock.jsonc",
+        "Modules/Custom/separator.jsonc",
+        "Modules/Group/audio.jsonc",
+        "Modules/pulseaudio.jsonc",
+        "Modules/tray.jsonc",
+        "Modules/Custom/swaync.jsonc"
+    ] 
+}
