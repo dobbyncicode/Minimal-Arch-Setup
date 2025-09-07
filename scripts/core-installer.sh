@@ -35,6 +35,7 @@ PACKAGES=(
     hyprshot
     json-glib
     kitty
+    kvantum
     libinput
     libgee
     lxappearance
