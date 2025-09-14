@@ -22,6 +22,7 @@ PACKAGES=(
     alsa-utils
     blueprint-compiler
     brave-bin
+    cli11
     dbus
     fontconfig
     gobject-introspection
@@ -36,20 +37,35 @@ PACKAGES=(
     json-glib
     kitty
     kvantum
+    libdrm
+    libpipewire
     libinput
     libgee
     lxappearance
     matugen-bin
+    mesa
     meson
     mpv
+    pam
     pavucontrol
+    pkg-config
     pipewire
     pipewire-pulse
     qt5ct
     qt6ct
+    qt6-base
+    qt6-5compat
+    qt6-declarative
+    qt6-imageformats
+    qt6-multimedia
+    qt6-wayland
+    qt6-shadertools
+    qt6-svg
+    quickshell
     sassc
     scdoc
     sddm
+    spirv-tools
     swaync
     swww
     thunar
@@ -57,6 +73,7 @@ PACKAGES=(
     unzip
     vala
     waybar
+    wayland
     wayland-protocols
     wofi
     wireplumber
@@ -91,6 +108,21 @@ progress_bar() {
         "$percent" "$pkg"
 }
 
+update_system() {
+    print_section "Updating System" "$YELLOW"
+    if sudo pacman -Syu --noconfirm >/dev/null 2>>"$LOGFILE"; then
+        printf "${GREEN}✓ System packages updated.${RESET}\n"
+    else
+        printf "${RED}✗ Failed updating system packages (see log).${RESET}\n"
+    fi
+
+    if yay -Syu --noconfirm >/dev/null 2>>"$LOGFILE"; then
+        printf "${GREEN}✓ AUR packages updated.${RESET}\n"
+    else
+        printf "${RED}✗ Failed updating AUR packages (see log).${RESET}\n"
+    fi
+}
+
 install_list() {
     local type=$1; shift
     local list=("$@")
@@ -102,12 +134,23 @@ install_list() {
         current=$((current+1))
         progress_bar "$current" "$total" "$pkg"
 
-        if yay -S --noconfirm --needed "$pkg" \
-            >/dev/null 2>>"$LOGFILE"; then
-            if [[ "$type" == "fonts" ]]; then
-                SUCCESS_FONTS+=("$pkg")
+        if yay -S --noconfirm --needed "$pkg" >/dev/null 2>>"$LOGFILE"; then
+            if pacman -Q "$pkg" &>/dev/null; then
+                if [[ "$type" == "fonts" ]]; then
+                    SUCCESS_FONTS+=("$pkg")
+                else
+                    SUCCESS_PKGS+=("$pkg")
+                fi
             else
-                SUCCESS_PKGS+=("$pkg")
+                if [[ "$type" == "fonts" ]]; then
+                    FAILED_FONTS+=("$pkg")
+                else
+                    FAILED_PKGS+=("$pkg")
+                fi
+                {
+                    echo "--- Failed (not found after yay): $pkg ---"
+                    echo
+                } >> "$LOGFILE"
             fi
         else
             if [[ "$type" == "fonts" ]]; then
@@ -116,7 +159,7 @@ install_list() {
                 FAILED_PKGS+=("$pkg")
             fi
             {
-                echo "--- Failed: $pkg ---"
+                echo "--- Failed (yay error): $pkg ---"
                 echo
             } >> "$LOGFILE"
         fi
@@ -201,6 +244,7 @@ mkdir -p "$LOGDIR"
     echo
 } > "$LOGFILE"
 
+update_system
 install_list "packages" "${PACKAGES[@]}"
 install_list "fonts" "${FONTS[@]}"
 enable_services
